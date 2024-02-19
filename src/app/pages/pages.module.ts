@@ -54,6 +54,7 @@ import { FirstPageComponent } from './maintenance/first-page/first-page.componen
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizMasterListComponent } from './quiz-master-list/quiz-master-list.component';
 import { AddQuestionComponent } from './quiz-master-list/add-question/add-question.component';
+import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,7 @@ import { AddQuestionComponent } from './quiz-master-list/add-question/add-questi
     QuizComponent,
     QuizMasterListComponent,
     AddQuestionComponent,
+    EditQuestionComponent,
   ],
   imports: [
     CommonModule,
