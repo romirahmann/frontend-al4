@@ -1,0 +1,25 @@
+<!-- quiz.component.html -->
+<div class="container">
+  <h1>Quiz</h1>
+  <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+    <div *ngFor="let question of questions; let i = index" class="form-group">
+      <label [for]="'question' + i">{{ question.text }}</label
+      ><br />
+      <div *ngFor="let option of question.options" class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          [id]="'question' + i + 'option' + option.id"
+          [formControlName]="'question' + i"
+          [value]="option.id"
+        />
+        <label
+          class="form-check-label"
+          [for]="'question' + i + 'option' + option.id"
+          >{{ option.text }}</label
+        >
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
