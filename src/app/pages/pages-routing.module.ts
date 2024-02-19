@@ -35,6 +35,7 @@ import { FirstPageComponent } from './maintenance/first-page/first-page.componen
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizMasterListComponent } from './quiz-master-list/quiz-master-list.component';
 import { AddQuestionComponent } from './quiz-master-list/add-question/add-question.component';
+import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 
 const routes: Routes = [
   {
@@ -149,6 +150,10 @@ const routes: Routes = [
   {
     path: 'add-question',
     component: AddQuestionComponent,
+  },
+  {
+    path: 'edit-question',
+    component: EditQuestionComponent,
   },
 
   {

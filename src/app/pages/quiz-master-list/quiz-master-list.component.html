@@ -57,12 +57,14 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <ng-container>
+                  <ng-container
+                    *ngFor="let question of questions; let i = index"
+                  >
                     <tr>
                       <!-- <ng-container *ngIf="document.id_area === id_area" >        -->
-                      <td></td>
-                      <td></td>
-                      <td class="text-center"></td>
+                      <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                      <td>{{ question?.question_text }}</td>
+                      <td>{{ question.nama_area }}</td>
                       <td>
                         <div class="d-flex gap-2 justify-content-center">
                           <div class="read">
@@ -71,7 +73,11 @@
                             </button>
                           </div>
                           <div class="edit">
-                            <button class="btn btn-sm btn-edit edit-item-btn">
+                            <button
+                              [routerLink]="['/edit-question']"
+                              [queryParams]="question"
+                              class="btn btn-sm btn-edit edit-item-btn"
+                            >
                               Edit
                             </button>
                           </div>

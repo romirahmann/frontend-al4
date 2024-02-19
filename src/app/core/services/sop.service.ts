@@ -175,9 +175,19 @@ export class SopService {
   }
 
   // QUESTIONS
+  getAllQuestions(): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/questions`, { headers });
+  }
   addQuestion(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
     return this.http.post(`${this.baseUrl}/master/question`, data, {
+      headers,
+    });
+  }
+  updateQuestion(id: any, data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.put(`${this.baseUrl}/master/question/${id}`, data, {
       headers,
     });
   }
