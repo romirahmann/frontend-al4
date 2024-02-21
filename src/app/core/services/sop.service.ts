@@ -191,4 +191,18 @@ export class SopService {
       headers,
     });
   }
+  getQuestionDetail(id: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/detail-question/${id}`, {
+      headers,
+    });
+  }
+
+  // ANSWER
+  addAnswer(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.post(`${this.baseUrl}/master/answer`, data, {
+      headers,
+    });
+  }
 }

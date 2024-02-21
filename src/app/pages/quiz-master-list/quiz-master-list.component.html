@@ -69,7 +69,13 @@
                       <td>
                         <div class="d-flex gap-2 justify-content-center">
                           <div class="read">
-                            <button class="btn btn-sm btn-add read-item-btn">
+                            <button
+                              [routerLink]="[
+                                '/detail-question',
+                                question.question_id
+                              ]"
+                              class="btn btn-sm btn-add read-item-btn"
+                            >
                               Detail
                             </button>
                           </div>

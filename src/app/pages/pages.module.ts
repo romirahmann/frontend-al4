@@ -55,6 +55,7 @@ import { QuizComponent } from './quiz/quiz.component';
 import { QuizMasterListComponent } from './quiz-master-list/quiz-master-list.component';
 import { AddQuestionComponent } from './quiz-master-list/add-question/add-question.component';
 import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
+import { DetailQuestionComponent } from './quiz-master-list/detail-question/detail-question.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-que
     QuizMasterListComponent,
     AddQuestionComponent,
     EditQuestionComponent,
+    DetailQuestionComponent,
   ],
   imports: [
     CommonModule,

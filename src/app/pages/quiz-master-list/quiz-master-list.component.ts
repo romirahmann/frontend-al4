@@ -41,8 +41,8 @@ export class QuizMasterListComponent {
 
   getAllQuestion() {
     this.sopService.getAllQuestions().subscribe((res: any) => {
-      // console.log(res.data);
       this.questions = res.data;
+      // console.log(this.questions);
       this.entires = this.questions.length;
       this.calculateTotalPages();
       this.updateDisplayQuestions();
@@ -64,7 +64,6 @@ export class QuizMasterListComponent {
       .updateQuestion(this.question.question_id, data)
       .subscribe((res: any) => {
         console.log('Delete successfully', res);
-
         this.modalService.dismissAll();
         this.getAllQuestion();
       });
