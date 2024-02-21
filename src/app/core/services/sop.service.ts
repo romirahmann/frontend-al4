@@ -205,4 +205,16 @@ export class SopService {
       headers,
     });
   }
+  updateAnswer(id: number, data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.put(`${this.baseUrl}/master/answer/${id}`, data, {
+      headers,
+    });
+  }
+  getAnswerById(id: number): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/edit-answer/${id}`, {
+      headers,
+    });
+  }
 }

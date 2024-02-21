@@ -14,6 +14,7 @@ export class DetailQuestionComponent {
   breadCrumbItems!: Array<{}>;
   question!: any;
   formAddAnswer!: FormGroup;
+  questionID!: number;
 
   constructor(
     private sopService: SopService,
@@ -50,6 +51,7 @@ export class DetailQuestionComponent {
 
       if (parameter) {
         const id = parseInt(parameter);
+        this.questionID = id;
         // console.log(id);
         this.getDetailQuestion(id);
         this.getForm(id);
