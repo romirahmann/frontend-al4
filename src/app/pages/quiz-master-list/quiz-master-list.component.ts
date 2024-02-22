@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SopService } from 'src/app/core/services/sop.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-quiz-master-list',
@@ -14,8 +15,6 @@ export class QuizMasterListComponent {
   questions!: any;
   areas!: any;
 
-  questionID!: number;
-
   // PAGINATION
   index: number = 1;
   pageSize: number = 20;
@@ -23,11 +22,12 @@ export class QuizMasterListComponent {
   totalPages: number = 0;
   displayQuestions: any;
   entires: any;
-  document_id!: string;
+  question!: any;
   constructor(
     private sopService: SopService,
     private fb: FormBuilder,
-    private route: Router
+    private route: Router,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -41,12 +41,32 @@ export class QuizMasterListComponent {
 
   getAllQuestion() {
     this.sopService.getAllQuestions().subscribe((res: any) => {
-      // console.log(res.data);
       this.questions = res.data;
+      // console.log(this.questions);
       this.entires = this.questions.length;
       this.calculateTotalPages();
       this.updateDisplayQuestions();
     });
+  }
+
+  // MODAL DELETE
+  centerModal(dataQuestion: any, removeModal: any) {
+    this.question = dataQuestion;
+    // console.log(this.question_id);
+    this.modalService.open(removeModal, { centered: true });
+  }
+  softDelete() {
+    const data = {
+      is_deleted: 1,
+    };
+    // console.log(this.question.question_id, data);
+    this.sopService
+      .updateQuestion(this.question.question_id, data)
+      .subscribe((res: any) => {
+        console.log('Delete successfully', res);
+        this.modalService.dismissAll();
+        this.getAllQuestion();
+      });
   }
 
   // Pagination

@@ -2,6 +2,7 @@
   title="MASTER QUESTIONS"
   [breadcrumbItems]="breadCrumbItems"
 ></app-breadcrumbs>
+
 <div class="card p-3">
   <div class="row">
     <div class="col-lg-12">
@@ -68,7 +69,13 @@
                       <td>
                         <div class="d-flex gap-2 justify-content-center">
                           <div class="read">
-                            <button class="btn btn-sm btn-add read-item-btn">
+                            <button
+                              [routerLink]="[
+                                '/detail-question',
+                                question.question_id
+                              ]"
+                              class="btn btn-sm btn-add read-item-btn"
+                            >
                               Detail
                             </button>
                           </div>
@@ -86,6 +93,7 @@
                               class="btn btn-sm btn-remove remove-item-btn"
                               data-bs-toggle="modal"
                               data-bs-target=".bs-example-modal-center"
+                              (click)="centerModal(question, removeModal)"
                             >
                               Remove
                             </button>
@@ -130,3 +138,30 @@
     <!-- end col -->
   </div>
 </div>
+
+<!-- Remove Modal -->
+<ng-template #removeModal let-modal>
+  <div class="modal-body text-center p-5">
+    <lord-icon
+      src="https://cdn.lordicon.com/gsqxdxog.json"
+      trigger="loop"
+      colors="primary:#f7b84b,secondary:#f06548"
+      style="width: 100px; height: 100px"
+    ></lord-icon>
+    <div class="mt-4">
+      <h3 class="mb-3">ARE YOU SURE ?</h3>
+      <p class="text-muted mb-4">Are you sure to remove this question?</p>
+      <div class="hstack gap-2 justify-content-center">
+        <button
+          type="button"
+          class="btn btn-light"
+          data-bs-dismiss="modal"
+          (click)="modal.close('Close click')"
+        >
+          Close
+        </button>
+        <a (click)="softDelete()" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</ng-template>
