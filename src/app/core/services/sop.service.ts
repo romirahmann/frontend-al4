@@ -175,9 +175,45 @@ export class SopService {
   }
 
   // QUESTIONS
+  getAllQuestions(): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/questions`, { headers });
+  }
   addQuestion(data: any): Observable<any> {
     const headers = this.authService.getHeaders();
     return this.http.post(`${this.baseUrl}/master/question`, data, {
+      headers,
+    });
+  }
+  updateQuestion(id: any, data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.put(`${this.baseUrl}/master/question/${id}`, data, {
+      headers,
+    });
+  }
+  getQuestionDetail(id: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/detail-question/${id}`, {
+      headers,
+    });
+  }
+
+  // ANSWER
+  addAnswer(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.post(`${this.baseUrl}/master/answer`, data, {
+      headers,
+    });
+  }
+  updateAnswer(id: number, data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.put(`${this.baseUrl}/master/answer/${id}`, data, {
+      headers,
+    });
+  }
+  getAnswerById(id: number): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/edit-answer/${id}`, {
       headers,
     });
   }
