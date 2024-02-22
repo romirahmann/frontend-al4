@@ -159,11 +159,10 @@ const routes: Routes = [
     component: AddQuestionComponent,
   },
   {
-
     path: 'Maintenance',
     component: FirstPageComponent,
   },
-
+  {
     path: 'edit-question',
     component: EditQuestionComponent,
   },
