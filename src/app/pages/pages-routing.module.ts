@@ -35,6 +35,7 @@ import { FirstPageComponent } from './maintenance/first-page/first-page.componen
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizMasterListComponent } from './quiz-master-list/quiz-master-list.component';
 import { AddQuestionComponent } from './quiz-master-list/add-question/add-question.component';
+import { OplComponent } from './maintenance/opl/opl.component';
 
 const routes: Routes = [
   {
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path: 'master',
     component: MasterComponent,
+  },
+  {
+    path: 'OPL',
+    component: OplComponent,
   },
 
   {
@@ -150,7 +155,10 @@ const routes: Routes = [
     path: 'add-question',
     component: AddQuestionComponent,
   },
-
+  {
+    path: 'Maintenance',
+    component: FirstPageComponent,
+  },
   {
     path: '',
     loadChildren: () =>
