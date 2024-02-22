@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SopService } from 'src/app/core/services/sop.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-question',
@@ -13,7 +14,11 @@ export class AddQuestionComponent {
   areas!: any;
   formAddQuestion!: FormGroup;
 
-  constructor(private sopService: SopService, private fb: FormBuilder) {}
+  constructor(
+    private sopService: SopService,
+    private fb: FormBuilder,
+    private route: Router
+  ) {}
 
   ngOnInit() {
     this.getBreadCrumbItems();
@@ -46,6 +51,7 @@ export class AddQuestionComponent {
   addQuestion(data: any) {
     this.sopService.addQuestion(data).subscribe((res: any) => {
       console.log('Add Question Success');
+      this.route.navigate(['/master-list-quiz']);
     });
   }
 }
