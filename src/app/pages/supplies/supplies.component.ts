@@ -106,7 +106,7 @@ export class SuppliesComponent implements OnInit {
       this.namaUserRole = 'User';
     } else if (this.userRole === 3) {
       this.namaUserRole = 'SPV';
-    } else if (this. userRole === 4) {
+    } else if (this.userRole === 4) {
       this.namaUserRole = 'MTC';
     }
   }
@@ -365,4 +365,24 @@ export class SuppliesComponent implements OnInit {
   getBreadCrumbItems() {
     this.breadCrumbItems = [{ label: "DATA SUPPLIES" }];
   }
+
+  getStatusText(stock: number, minimalStok: number, maxStok: number): string {
+    if (stock < minimalStok) {
+      return "Kurang";
+    } else if (stock > maxStok) {
+      return "Over";
+    } else {
+      return "Cukup";
+    }
+  }
+  getStatusTextColor(stock: number, minimalStok: number, maxStok: number): string {
+    if (stock < minimalStok) {
+      return "red"; // Jika kurang dari minimal stok, kembalikan warna merah
+    } else if (stock > maxStok) {
+      return "blue"; // Jika lebih dari maksimal stok, kembalikan warna biru
+    } else {
+      return "green"; // Jika cukup, kembalikan warna hijau
+    }
+  }
+  
 }

@@ -54,6 +54,9 @@ import { FirstPageComponent } from './maintenance/first-page/first-page.componen
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizMasterListComponent } from './quiz-master-list/quiz-master-list.component';
 import { AddQuestionComponent } from './quiz-master-list/add-question/add-question.component';
+
+import { OplComponent } from './maintenance/opl/opl.component';
+
 import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 import { DetailQuestionComponent } from './quiz-master-list/detail-question/detail-question.component';
 import { EditAnswerComponent } from './quiz-master-list/edit-answer/edit-answer.component';
@@ -89,9 +92,13 @@ import { EditAnswerComponent } from './quiz-master-list/edit-answer/edit-answer.
     QuizComponent,
     QuizMasterListComponent,
     AddQuestionComponent,
+
+    OplComponent,
+
     EditQuestionComponent,
     DetailQuestionComponent,
     EditAnswerComponent,
+
   ],
   imports: [
     CommonModule,

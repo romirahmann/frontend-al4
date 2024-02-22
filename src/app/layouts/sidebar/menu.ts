@@ -27,7 +27,7 @@ export const MENU: MenuItem[] = [
     subItems: [
       {
         id: 7,
-        label: 'Dasboard',
+        label: 'Dashboard',
         parentId: 6,
         link: '/sop',
       },
@@ -37,6 +37,19 @@ export const MENU: MenuItem[] = [
     id: 8,
     label: 'Maintenance Part',
     icon: 'ri-settings-4-line',
-    link: '/maintenance'
+    link: '/maintenance',
+    subItems :[
+      {
+        id: 10,
+        label: 'Maintenance',
+        link: '/maintenance',
+        
+      },
+      {
+        id: 9,
+        label: 'OPL',
+        link: '/OPL',
+      },  
+    ]
   }
 ];

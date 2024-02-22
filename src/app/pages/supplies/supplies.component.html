@@ -11,7 +11,8 @@
     <div class="card-body">
       <div class="mb-3 d-flex justify-content-between">
         <div class="d-flex">
-          <a class="btn btn-primary btn-label waves-effect waves-light me-2" (click)="goToAddSupply()" *ngIf="userRole === 1 || userRole === 3 || userRole === 4" ><i
+          <a class="btn btn-primary btn-label waves-effect waves-light me-2" (click)="goToAddSupply()"
+            *ngIf="userRole === 1 || userRole === 3 || userRole === 4"><i
               class="ri-add-circle-line label-icon align-middle fs-16 me-2"></i>Add Supplies</a>
           <a class="btn btn-label waves-effect waves-light" data-toggle="modal" data-target="#transactionModal"
             style="background-color: #67B173; color: white;">
@@ -33,6 +34,7 @@
             <th class="text-center">Stock</th>
             <th class="text-center">Status</th>
             <th class="text-center">Action</th>
+            <th class="text-center">Expired</th>
           </tr>
         </thead>
         <tbody>
@@ -45,11 +47,16 @@
             <td class="text-center">{{ supply.stok }}</td>
             <td class="text-center">
               <div class="d-flex align-items-center">
-                <div class="indicator"
-                  [style.background-color]="getIndicatorColor(supply.stok, supply.minimal_stok, supply.max_stok)">
+                <div class="indicator" [ngStyle]="{ 'background-color': getIndicatorColor(supply.stok, supply.minimal_stok, supply.max_stok), 'width.px': 20, 'height.px': 20, 'margin-right.px': 10 }">
                 </div>
+                <span class="ms-2" [ngStyle]="{ color: getStatusTextColor(supply.stok, supply.minimal_stok, supply.max_stok) }">
+                  {{ getStatusText(supply.stok, supply.minimal_stok, supply.max_stok) }}
+                </span>
+                
               </div>
             </td>
+            
+            
 
             <td class="text-center">
               <div class="btn-group" role="group" aria-label="Aksi">
@@ -87,80 +94,79 @@
       </div>
 
       <div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="transactionModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" style="max-width: 80%; max-height: 80%;" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="transactionModalLabel">Transaction</h4>
-      </div>
-      <div class="modal-body">
-        <div class="container-fluid">
-          <form>
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="supplySelection">Supplies</label>
-                  <select class="form-select" id="supplySelection" name="supplySelection" [(ngModel)]="selectedSupply"
-                    required>
-                    <option>Pilih Supplies</option>
-                    <option *ngFor="let supply of filteredSupplies" [ngValue]="supply">{{ supply.nama_supply }}
-                    </option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="transactionType">Transaction Type</label>
-                  <select class="form-select" id="transactionType" name="transactionType"
-                    [(ngModel)]="selectedTransactionType">
-                    <option value="IN">IN</option>
-                    <option value="OUT">OUT</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="quantity">Quantity</label>
-                  <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="quantity"
-                    required>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="transactionDate">Transaction Date</label>
-                  <input type="date" class="form-control" id="transactionDate" name="transactionDate"
-                    [(ngModel)]="transactionDate" required>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="user">User</label>
-                  <select class="form-select" id="user" name="user" [(ngModel)]="user" required>
-                    <option [ngValue]="userName">{{ userName }}</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="quantity">Description</label>
-                  <input type="text" class="form-control" id="description" name="description" [(ngModel)]="description"
-                    required>
-                </div>
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 80%; max-height: 80%;" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="transactionModalLabel">Transaction</h4>
+            </div>
+            <div class="modal-body">
+              <div class="container-fluid">
+                <form>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="supplySelection">Supplies</label>
+                        <select class="form-select" id="supplySelection" name="supplySelection"
+                          [(ngModel)]="selectedSupply" required>
+                          <option>Pilih Supplies</option>
+                          <option *ngFor="let supply of filteredSupplies" [ngValue]="supply">{{ supply.nama_supply }}
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="transactionType">Transaction Type</label>
+                        <select class="form-select" id="transactionType" name="transactionType"
+                          [(ngModel)]="selectedTransactionType">
+                          <option value="IN">IN</option>
+                          <option value="OUT">OUT</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" [(ngModel)]="quantity"
+                          required>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="transactionDate">Transaction Date</label>
+                        <input type="date" class="form-control" id="transactionDate" name="transactionDate"
+                          [(ngModel)]="transactionDate" required>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="user">User</label>
+                        <select class="form-select" id="user" name="user" [(ngModel)]="user" required>
+                          <option [ngValue]="userName">{{ userName }}</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label for="quantity">Description</label>
+                        <input type="text" class="form-control" id="description" name="description"
+                          [(ngModel)]="description" required>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-          </form>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cancelAddTransaction()"
+                data-dismiss="modal">Cancel
+              </button>
+              <button type="button" class="btn btn-primary" (click)="addTransaction()" data-dismiss="modal">Add</button>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="cancelAddTransaction()" data-dismiss="modal">Cancel
-        </button>
-        <button type="button" class="btn btn-primary" (click)="addTransaction()" data-dismiss="modal">Add</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
     </div>
   </div>
 </div>
