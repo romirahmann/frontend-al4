@@ -197,6 +197,12 @@ export class SopService {
       headers,
     });
   }
+  getQuestionByAreaID(id: number): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/question/${id}`, {
+      headers,
+    });
+  }
 
   // ANSWER
   addAnswer(data: any): Observable<any> {

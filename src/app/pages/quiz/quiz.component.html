@@ -2,21 +2,24 @@
 <div class="container">
   <h1>Quiz</h1>
   <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
-    <div *ngFor="let question of questions; let i = index" class="form-group">
-      <label [for]="'question' + i">{{ question.text }}</label
+    <div
+      *ngFor="let question of questionsWithAnswers; let i = index"
+      class="form-group"
+    >
+      <label [for]="'question' + i">{{ question.question_text }}</label
       ><br />
-      <div *ngFor="let option of question.options" class="form-check">
+      <div *ngFor="let option of question.answers" class="form-check">
         <input
           class="form-check-input"
           type="radio"
-          [id]="'question' + i + 'option' + option.id"
+          [id]="'question' + i + 'option' + option.answer_id"
           [formControlName]="'question' + i"
-          [value]="option.id"
+          [value]="option.answer_id"
         />
         <label
           class="form-check-label"
-          [for]="'question' + i + 'option' + option.id"
-          >{{ option.text }}</label
+          [for]="'question' + i + 'option' + option.answer_id"
+          >{{ option.answer_text }}</label
         >
       </div>
     </div>

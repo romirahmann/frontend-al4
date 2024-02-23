@@ -1,14 +1,19 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SopService } from 'src/app/core/services/sop.service';
 
-interface Option {
-  id: string;
-  text: string;
+interface Answer {
+  answer_id: number;
+  answer_text: string;
+  status: number;
 }
 
-interface Question {
-  text: string;
-  options: Option[];
+interface QuizQuestion {
+  question_id: number;
+  question_text: string;
+  answers: Answer[];
+  score: number;
 }
 
 @Component({
@@ -18,37 +23,53 @@ interface Question {
 })
 export class QuizComponent {
   quizForm!: FormGroup;
-  questions: Question[] = [
-    {
-      text: 'What is the capital of France?',
-      options: [
-        { id: 'paris', text: 'Paris' },
-        { id: 'berlin', text: 'Berlin' },
-        { id: 'london', text: 'London' },
-      ],
-    },
-    {
-      text: 'Who wrote Hamlet?',
-      options: [
-        { id: 'shakespeare', text: 'William Shakespeare' },
-        { id: 'dickens', text: 'Charles Dickens' },
-        { id: 'twain', text: 'Mark Twain' },
-      ],
-    },
-  ];
-  constructor(private fb: FormBuilder) {}
+  questionsWithAnswers: QuizQuestion[] = [];
+  totalScore: number = 0;
+
+  constructor(
+    private fb: FormBuilder,
+    private sopService: SopService,
+    private authService: AuthService
+  ) {}
   ngOnInit() {
     this.createForm();
+    this.getAreaID();
+  }
+
+  getAreaID() {
+    const areaName = this.authService.getAreaName();
+
+    // console.log(areaName);
+    if (areaName === 'IBF') {
+      let id = 1;
+      this.getQuestions(id);
+    }
+    if (areaName === 'PREPARASI') {
+      let id = 2;
+      this.getQuestions(id);
+    }
+    if (areaName === 'PACKING') {
+      let id = 3;
+      this.getQuestions(id);
+    }
   }
   createForm(): void {
-    const group: Record<string, any> = {}; // Menambahkan tipe untuk group
-    this.questions.forEach((question, index) => {
+    const group: Record<string, any> = {};
+    this.questionsWithAnswers.forEach((question, index) => {
       group['question' + index] = '';
     });
     this.quizForm = this.fb.group(group);
   }
+
+  getQuestions(id: number) {
+    this.sopService.getQuestionByAreaID(id).subscribe((res: any) => {
+      this.questionsWithAnswers = res.data.questionsWithAnswers;
+      this.createForm(); // Panggil createForm setelah mendapatkan data
+      // console.log(this.questionsWithAnswers);
+    });
+  }
+
   submitQuiz(): void {
     console.log(this.quizForm.value);
-    // Handle submission logic here
   }
 }

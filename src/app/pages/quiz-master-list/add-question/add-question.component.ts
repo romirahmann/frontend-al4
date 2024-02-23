@@ -30,6 +30,7 @@ export class AddQuestionComponent {
     this.formAddQuestion = this.fb.group({
       question_text: ['', Validators.required],
       id_area: ['', Validators.required],
+      score: ['', Validators.required],
     });
   }
 
@@ -39,12 +40,13 @@ export class AddQuestionComponent {
 
   getAreas() {
     this.sopService.getAllAreas().subscribe((res: any) => {
-      console.log(res.data);
+      // console.log(res.data);
       this.areas = res.data;
     });
   }
 
   onSubmit() {
+    // console.log(this.formAddQuestion.value);
     this.addQuestion(this.formAddQuestion.value);
   }
 
