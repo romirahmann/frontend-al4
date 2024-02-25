@@ -79,54 +79,77 @@ export class QuizComponent {
   }
 
   submitQuiz(): void {
-    let dataAnswer = this.quizForm.value;
+    const questionData = this.quizForm.value;
 
-    let answerUsers = {
-      question_1: dataAnswer.question0,
-      question_2: dataAnswer.question1,
-      question_3: dataAnswer.question2,
-      question_4: dataAnswer.question3,
-      question_5: dataAnswer.question4,
-    };
+    // Memeriksa apakah ada pertanyaan yang belum dijawab
+    const unansweredQuestions = Object.values(questionData).filter(
+      (answer: any) => !answer
+    );
 
+    // Jika ada pertanyaan yang belum dijawab, tampilkan pesan kesalahan
+    if (unansweredQuestions.length > 0) {
+      alert('Silahkan isi semua pertanyaan sebelum mengirimkan kuis.');
+      return;
+    }
+
+    // Jika semua pertanyaan telah dijawab, lanjutkan dengan mengirimkan jawaban
+    this.addResult();
+  }
+
+  addResult() {
+    let dataAnswer: any = this.quizForm.value;
+
+    let answerUsers: { [key: string]: any } = {}; // Objek kosong untuk menyimpan jawaban
     let score: number = 0;
 
-    Object.entries(answerUsers).forEach(([key, value]) => {
-      let question = value[0];
-      let answer = value[1];
+    // Mengambil kunci-kunci pertanyaan dari dataAnswer
+    let questionKeys = Object.keys(dataAnswer);
 
-      if (answer.status === 1) {
+    // Iterasi melalui kunci-kunci pertanyaan
+    questionKeys.forEach((key, index) => {
+      let questionNumber = index + 1;
+      let answerKey = `question_${questionNumber}`;
+
+      // Menambahkan jawaban ke dalam objek answerUsers
+      answerUsers[answerKey] = dataAnswer[key];
+
+      // Melakukan logging untuk memeriksa
+      // console.log(answerKey, dataAnswer[key]);
+      let question: any = dataAnswer[key][0];
+      let answer: any = dataAnswer[key][1].status;
+
+      // AKUMULASI SCORE
+      if (answer === 1) {
         score = score + question.score;
-        // if (this.userId) {
-        //   this.sopService
-        //     .addResultUser({
-        //       id_user: this.userId,
-        //       score: question.score,
-        //       question_id: question.question_id,
-        //     })
-        //     .subscribe((res: any) => {
-        //       console.log('Add Result True Success!', res);
-        //     });
-        // }
-        // console.log('Perulangan Score benar: ', score);
+        if (this.userId) {
+          this.sopService
+            .addResultUser({
+              id_user: this.userId,
+              score: question.score,
+              question_id: question.question_id,
+            })
+            .subscribe((res: any) => {
+              console.log('Add Answer Successfully', res.data);
+            });
+        }
       }
-      if (answer.status === 0) {
+      if (answer === 0) {
         score = score + 0;
-        // if (this.userId) {
-        //   this.sopService
-        //     .addResultUser({
-        //       id_user: this.userId,
-        //       score: 0,
-        //       question_id: question.question_id,
-        //     })
-        //     .subscribe((res: any) => {
-        //       console.log('Add Result False Success!', res);
-        //     });
-        // }
-        // console.log('Perulangan Score Salah: ', score);
+        if (this.userId) {
+          this.sopService
+            .addResultUser({
+              id_user: this.userId,
+              score: 0,
+              question_id: question.question_id,
+            })
+            .subscribe((res: any) => {
+              console.log('Add Answer Successfully', res.data);
+            });
+        }
       }
     });
 
+    console.log(score);
     this.openModal(this.succesModal, score);
   }
 
