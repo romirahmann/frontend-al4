@@ -1,7 +1,9 @@
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SopService } from 'src/app/core/services/sop.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 interface Answer {
   answer_id: number;
@@ -25,11 +27,14 @@ export class QuizComponent {
   quizForm!: FormGroup;
   questionsWithAnswers: QuizQuestion[] = [];
   totalScore: number = 0;
-
+  userId!: number;
+  @ViewChild('succesModal') succesModal!: ElementRef;
   constructor(
     private fb: FormBuilder,
     private sopService: SopService,
-    private authService: AuthService
+    private authService: AuthService,
+    private modalService: NgbModal,
+    private route: Router
   ) {}
   ngOnInit() {
     this.createForm();
@@ -38,6 +43,11 @@ export class QuizComponent {
 
   getAreaID() {
     const areaName = this.authService.getAreaName();
+    const user_id = this.authService.getUserId();
+
+    if (user_id) {
+      this.userId = parseInt(user_id);
+    }
 
     // console.log(areaName);
     if (areaName === 'IBF') {
@@ -65,11 +75,67 @@ export class QuizComponent {
     this.sopService.getQuestionByAreaID(id).subscribe((res: any) => {
       this.questionsWithAnswers = res.data.questionsWithAnswers;
       this.createForm(); // Panggil createForm setelah mendapatkan data
-      // console.log(this.questionsWithAnswers);
     });
   }
 
   submitQuiz(): void {
-    console.log(this.quizForm.value);
+    let dataAnswer = this.quizForm.value;
+
+    let answerUsers = {
+      question_1: dataAnswer.question0,
+      question_2: dataAnswer.question1,
+      question_3: dataAnswer.question2,
+      question_4: dataAnswer.question3,
+      question_5: dataAnswer.question4,
+    };
+
+    let score: number = 0;
+
+    Object.entries(answerUsers).forEach(([key, value]) => {
+      let question = value[0];
+      let answer = value[1];
+
+      if (answer.status === 1) {
+        score = score + question.score;
+        // if (this.userId) {
+        //   this.sopService
+        //     .addResultUser({
+        //       id_user: this.userId,
+        //       score: question.score,
+        //       question_id: question.question_id,
+        //     })
+        //     .subscribe((res: any) => {
+        //       console.log('Add Result True Success!', res);
+        //     });
+        // }
+        // console.log('Perulangan Score benar: ', score);
+      }
+      if (answer.status === 0) {
+        score = score + 0;
+        // if (this.userId) {
+        //   this.sopService
+        //     .addResultUser({
+        //       id_user: this.userId,
+        //       score: 0,
+        //       question_id: question.question_id,
+        //     })
+        //     .subscribe((res: any) => {
+        //       console.log('Add Result False Success!', res);
+        //     });
+        // }
+        // console.log('Perulangan Score Salah: ', score);
+      }
+    });
+
+    this.openModal(this.succesModal, score);
+  }
+
+  openModal(content: any, score: number) {
+    this.totalScore = score;
+    this.modalService.open(content, { centered: true });
+  }
+  back() {
+    this.modalService.dismissAll();
+    this.route.navigate(['/sop']);
   }
 }

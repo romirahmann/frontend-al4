@@ -223,4 +223,18 @@ export class SopService {
       headers,
     });
   }
+
+  // RESULT
+  addResultUser(data: any): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.post(`${this.baseUrl}/master/add-result`, data, {
+      headers,
+    });
+  }
+  getScoreUserByUserId(id: number): Observable<any> {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/total-score/${id}`, {
+      headers,
+    });
+  }
 }

@@ -65,3 +65,29 @@
     </div>
   </div>
 </div>
+
+<!-- Remove Modal -->
+<ng-template #succesModal let-modal>
+  <div class="modal-body text-center p-5">
+    <lord-icon
+      src="https://cdn.lordicon.com/xjronrda.json"
+      trigger="hover"
+      style="width: 250px; height: 250px"
+    >
+    </lord-icon>
+    <div class="mt-4">
+      <div *ngIf="totalScore > 60">
+        <h3 class="mb-3">Congratulation!!!</h3>
+        <p class="text-muted mb-4">Your Score: {{ totalScore }}</p>
+      </div>
+      <div *ngIf="totalScore < 60">
+        <h3 class="mb-3">Tingkatkan Lagi!!!</h3>
+        <p class="text-muted">Your Score: {{ totalScore }}</p>
+        <p class="text-muted mb-4">Baca lagi dokumen SOP nya ya!</p>
+      </div>
+      <div class="hstack gap-2 justify-content-center">
+        <a (click)="back()" class="btn btn-danger">Dashboard</a>
+      </div>
+    </div>
+  </div> </ng-template
+>>

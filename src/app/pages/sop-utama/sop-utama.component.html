@@ -603,16 +603,28 @@
             />
             <div class="keteranganGeneral ms-5">
               <h3>Quiz {{ area.nama_area }}</h3>
+              <p>
+                Score: <span *ngIf="scoreQuiz !== null">{{ scoreQuiz }}</span>
+                <span *ngIf="scoreQuiz === null">0</span>
+              </p>
             </div>
           </div>
           <div
             class="col-12 col-md-6 d-flex justify-content-end align-items-center"
           >
             <button
+              *ngIf="scoreQuiz === 0"
               routerLink="/quiz"
               class="btn btnRead text-white fw-bold card-animate"
             >
               START
+            </button>
+            <button
+              *ngIf="scoreQuiz !== 0"
+              routerLink="/quiz"
+              class="btn btn-danger text-white fw-bold card-animate"
+            >
+              REATTEMPT
             </button>
           </div>
         </div>
@@ -631,16 +643,28 @@
             />
             <div class="keteranganGeneral ms-5">
               <h3>Quiz {{ area.nama_area }}</h3>
+              <p>
+                Score: <span *ngIf="scoreQuiz !== null">{{ scoreQuiz }}</span>
+                <span *ngIf="scoreQuiz === null">0</span>
+              </p>
             </div>
           </div>
           <div
             class="col-12 col-md-6 d-flex justify-content-end align-items-center"
           >
             <button
+              *ngIf="scoreQuiz === null"
               routerLink="/quiz"
               class="btn btnRead text-white fw-bold card-animate"
             >
               START
+            </button>
+            <button
+              *ngIf="scoreQuiz !== null"
+              routerLink="/quiz"
+              class="btn btn-danger text-white fw-bold card-animate"
+            >
+              REATTEMPT
             </button>
           </div>
         </div>
@@ -657,16 +681,28 @@
             />
             <div class="keteranganGeneral ms-5">
               <h3>Quiz {{ area.nama_area }}</h3>
+              <p>
+                Score: <span *ngIf="scoreQuiz !== null">{{ scoreQuiz }}</span>
+                <span *ngIf="scoreQuiz === null">0</span>
+              </p>
             </div>
           </div>
           <div
             class="col-12 col-md-6 d-flex justify-content-end align-items-center"
           >
             <button
+              *ngIf="scoreQuiz === 0"
               routerLink="/quiz"
               class="btn btnRead text-white fw-bold card-animate"
             >
               START
+            </button>
+            <button
+              *ngIf="scoreQuiz !== 0"
+              routerLink="/quiz"
+              class="btn btn-danger text-white fw-bold card-animate"
+            >
+              REATTEMPT
             </button>
           </div>
         </div>
