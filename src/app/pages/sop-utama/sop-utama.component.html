@@ -101,12 +101,12 @@
         </div>
       </div>
     </div>
-
-    <!-- CHARTS -->
-    <div class="row mt-5" *ngIf="userRole === 1">
-      <ng-container *ngFor="let user of usersData; let i = index">
-        <div class="col-12 col-md-6 mt-2">
-          <a [routerLink]="['/dashboard-group', user.group_id]">
+    <!-- Dashboard Score Quiz -->
+    <div class="row card mt-3 p-5" *ngIf="userRole !== 2">
+      <h1>Dashboard Score Quiz SOP</h1>
+      <div class="row mt-2">
+        <div class="col-12 col-md-4">
+          <a [routerLink]="">
             <div class="card card-animate overflow-hidden">
               <div class="position-absolute start-0" style="z-index: 0">
                 <svg
@@ -135,21 +135,12 @@
                     <p
                       class="text-uppercase fw-medium text-muted text-truncate mb-3"
                     >
-                      Group {{ i + 1 }}
+                      Section
                     </p>
-                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">
-                      {{ user.nama_user }}
-                    </h4>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">IBF</h4>
                   </div>
                   <div class="flex-shrink-0">
-                    <apx-chart
-                      [series]="[getUserPercentage(user.group_id)]"
-                      [chart]="chartOption.chart"
-                      [dataLabels]="chartOption.dataLabels"
-                      [plotOptions]="chartOption.plotOptions"
-                      [colors]="chartOption.colors"
-                    >
-                    </apx-chart>
+                    <button class="btn btn-primary">Detail</button>
                   </div>
                 </div>
               </div>
@@ -157,175 +148,326 @@
             </div>
           </a>
         </div>
-      </ng-container>
-    </div>
-
-    <!-- Dasboard SPV -->
-    <div class="row mt-5" *ngIf="userRole === 3">
-      <div class="col-12 col-md-6 p-3">
-        <div class="chart-progress p-3 dasboard-box">
-          <h3>Progress Team {{ userGroup - 1 }}</h3>
-          <hr />
-          <div class="card">
-            <div class="card-body">
-              <apx-chart
-                [series]="distributedColumnChart.series"
-                [chart]="distributedColumnChart.chart"
-                [dataLabels]="distributedColumnChart.dataLabels"
-                [plotOptions]="distributedColumnChart.plotOptions"
-                [yaxis]="distributedColumnChart.yaxis"
-                [xaxis]="distributedColumnChart.xaxis"
-                [legend]="distributedColumnChart.legend"
-                [colors]="distributedColumnChart.colors"
-                [grid]="distributedColumnChart.grid"
-                dir="ltr"
-              >
-              </apx-chart>
+        <div class="col-12 col-md-4">
+          <a [routerLink]="">
+            <div class="card card-animate overflow-hidden">
+              <div class="position-absolute start-0" style="z-index: 0">
+                <svg
+                  version="1.2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 120"
+                  width="200"
+                  height="120"
+                >
+                  <style>
+                    .s0 {
+                      opacity: 0.07;
+                      fill: #2a76b2;
+                    }
+                  </style>
+                  <path
+                    id="Shape 8"
+                    class="s0"
+                    d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                  />
+                </svg>
+              </div>
+              <div class="card-body" style="z-index: 1">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 overflow-hidden">
+                    <p
+                      class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                    >
+                      Section
+                    </p>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">
+                      PREPARASI
+                    </h4>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button class="btn btn-primary">Detail</button>
+                  </div>
+                </div>
+              </div>
+              <!-- end card body -->
             </div>
-          </div>
+          </a>
+        </div>
+        <div class="col-12 col-md-4">
+          <a [routerLink]="">
+            <div class="card card-animate overflow-hidden">
+              <div class="position-absolute start-0" style="z-index: 0">
+                <svg
+                  version="1.2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 120"
+                  width="200"
+                  height="120"
+                >
+                  <style>
+                    .s0 {
+                      opacity: 0.07;
+                      fill: #2a76b2;
+                    }
+                  </style>
+                  <path
+                    id="Shape 8"
+                    class="s0"
+                    d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                  />
+                </svg>
+              </div>
+              <div class="card-body" style="z-index: 1">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 overflow-hidden">
+                    <p
+                      class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                    >
+                      Section
+                    </p>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">PACKING</h4>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button class="btn btn-primary">Detail</button>
+                  </div>
+                </div>
+              </div>
+              <!-- end card body -->
+            </div>
+          </a>
         </div>
       </div>
-      <div class="col-12 col-md-6 p-3">
-        <div class="row mt-3" class="fade-in">
-          <div class="card card-animate overflow-hidden">
-            <div class="position-absolute start-0" style="z-index: 0">
-              <svg
-                version="1.2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 120"
-                width="200"
-                height="120"
-              >
-                <style>
-                  .s0 {
-                    opacity: 0.07;
-                    fill: #2a76b2;
-                  }
-                </style>
-                <path
-                  id="Shape 8"
-                  class="s0"
-                  d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
-                />
-              </svg>
-            </div>
-            <div class="card-body" style="z-index: 1">
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1 overflow-hidden">
-                  <p
-                    class="text-uppercase fw-medium text-muted text-truncate mb-3"
+    </div>
+    <!-- Dashboard Progress E-Learning -->
+    <div class="row card mt-3 p-5" *ngIf="userRole !== 2">
+      <h1>Progress E-Learning Dokumen SOP</h1>
+      <!-- CHARTS -->
+      <div class="row mt-1" *ngIf="userRole === 1">
+        <ng-container *ngFor="let user of usersData; let i = index">
+          <div class="col-12 col-md-6 mt-2">
+            <a [routerLink]="['/dashboard-group', user.group_id]">
+              <div class="card card-animate overflow-hidden">
+                <div class="position-absolute start-0" style="z-index: 0">
+                  <svg
+                    version="1.2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 200 120"
+                    width="200"
+                    height="120"
                   >
-                    Group {{ userGroup - 1 }}
-                  </p>
-                  <h4 class="fs-22 fw-semibold ff-secondary mb-0">TEAM IBF</h4>
+                    <style>
+                      .s0 {
+                        opacity: 0.07;
+                        fill: #2a76b2;
+                      }
+                    </style>
+                    <path
+                      id="Shape 8"
+                      class="s0"
+                      d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                    />
+                  </svg>
                 </div>
-                <div class="flex-shrink-0">
-                  <button
-                    [routerLink]="['/list-user-progress', 1]"
-                    class="btn btnRead text-white fw-bold"
-                  >
-                    View
-                  </button>
+                <div class="card-body" style="z-index: 1">
+                  <div class="d-flex align-items-center">
+                    <div class="flex-grow-1 overflow-hidden">
+                      <p
+                        class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                      >
+                        Group {{ i + 1 }}
+                      </p>
+                      <h4 class="fs-22 fw-semibold ff-secondary mb-0">
+                        {{ user.nama_user }}
+                      </h4>
+                    </div>
+                    <div class="flex-shrink-0">
+                      <apx-chart
+                        [series]="[getUserPercentage(user.group_id)]"
+                        [chart]="chartOption.chart"
+                        [dataLabels]="chartOption.dataLabels"
+                        [plotOptions]="chartOption.plotOptions"
+                        [colors]="chartOption.colors"
+                      >
+                      </apx-chart>
+                    </div>
+                  </div>
                 </div>
+                <!-- end card body -->
+              </div>
+            </a>
+          </div>
+        </ng-container>
+      </div>
+
+      <!-- Dasboard SPV -->
+      <div class="row mt-5" *ngIf="userRole === 3">
+        <div class="col-12 col-md-6 p-3">
+          <div class="chart-progress p-3 dasboard-box">
+            <h3>Progress Team {{ userGroup - 1 }}</h3>
+            <hr />
+            <div class="card">
+              <div class="card-body">
+                <apx-chart
+                  [series]="distributedColumnChart.series"
+                  [chart]="distributedColumnChart.chart"
+                  [dataLabels]="distributedColumnChart.dataLabels"
+                  [plotOptions]="distributedColumnChart.plotOptions"
+                  [yaxis]="distributedColumnChart.yaxis"
+                  [xaxis]="distributedColumnChart.xaxis"
+                  [legend]="distributedColumnChart.legend"
+                  [colors]="distributedColumnChart.colors"
+                  [grid]="distributedColumnChart.grid"
+                  dir="ltr"
+                >
+                </apx-chart>
               </div>
             </div>
-            <!-- end card body -->
           </div>
         </div>
-        <div class="row mt-2" class="fade-in">
-          <div class="card card-animate overflow-hidden">
-            <div class="position-absolute start-0" style="z-index: 0">
-              <svg
-                version="1.2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 120"
-                width="200"
-                height="120"
-              >
-                <style>
-                  .s0 {
-                    opacity: 0.07;
-                    fill: #2a76b2;
-                  }
-                </style>
-                <path
-                  id="Shape 8"
-                  class="s0"
-                  d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
-                />
-              </svg>
-            </div>
-            <div class="card-body" style="z-index: 1">
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1 overflow-hidden">
-                  <p
-                    class="text-uppercase fw-medium text-muted text-truncate mb-3"
-                  >
-                    Group {{ userGroup - 1 }}
-                  </p>
-                  <h4 class="fs-22 fw-semibold ff-secondary mb-0">
-                    TEAM PREPARASI
-                  </h4>
-                </div>
-                <div class="flex-shrink-0">
-                  <button
-                    [routerLink]="['/list-user-progress', 2]"
-                    class="btn btnRead text-white fw-bold"
-                  >
-                    View
-                  </button>
+        <div class="col-12 col-md-6 p-3">
+          <div class="row mt-3" class="fade-in">
+            <div class="card card-animate overflow-hidden">
+              <div class="position-absolute start-0" style="z-index: 0">
+                <svg
+                  version="1.2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 120"
+                  width="200"
+                  height="120"
+                >
+                  <style>
+                    .s0 {
+                      opacity: 0.07;
+                      fill: #2a76b2;
+                    }
+                  </style>
+                  <path
+                    id="Shape 8"
+                    class="s0"
+                    d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                  />
+                </svg>
+              </div>
+              <div class="card-body" style="z-index: 1">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 overflow-hidden">
+                    <p
+                      class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                    >
+                      Group {{ userGroup - 1 }}
+                    </p>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">
+                      TEAM IBF
+                    </h4>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button
+                      [routerLink]="['/list-user-progress', 1]"
+                      class="btn btnRead text-white fw-bold"
+                    >
+                      View
+                    </button>
+                  </div>
                 </div>
               </div>
+              <!-- end card body -->
             </div>
-            <!-- end card body -->
           </div>
-        </div>
-        <div class="row mt-2" class="fade-in">
-          <div class="card card-animate overflow-hidden">
-            <div class="position-absolute start-0" style="z-index: 0">
-              <svg
-                version="1.2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 120"
-                width="200"
-                height="120"
-              >
-                <style>
-                  .s0 {
-                    opacity: 0.07;
-                    fill: #2a76b2;
-                  }
-                </style>
-                <path
-                  id="Shape 8"
-                  class="s0"
-                  d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
-                />
-              </svg>
-            </div>
-            <div class="card-body" style="z-index: 1">
-              <div class="d-flex align-items-center">
-                <div class="flex-grow-1 overflow-hidden">
-                  <p
-                    class="text-uppercase fw-medium text-muted text-truncate mb-3"
-                  >
-                    Group {{ userGroup - 1 }}
-                  </p>
-                  <h4 class="fs-22 fw-semibold ff-secondary mb-0">
-                    TEAM PACKING
-                  </h4>
-                </div>
-                <div class="flex-shrink-0">
-                  <button
-                    [routerLink]="['/list-user-progress', 3]"
-                    class="btn btnRead text-white fw-bold"
-                  >
-                    View
-                  </button>
+          <div class="row mt-2" class="fade-in">
+            <div class="card card-animate overflow-hidden">
+              <div class="position-absolute start-0" style="z-index: 0">
+                <svg
+                  version="1.2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 120"
+                  width="200"
+                  height="120"
+                >
+                  <style>
+                    .s0 {
+                      opacity: 0.07;
+                      fill: #2a76b2;
+                    }
+                  </style>
+                  <path
+                    id="Shape 8"
+                    class="s0"
+                    d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                  />
+                </svg>
+              </div>
+              <div class="card-body" style="z-index: 1">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 overflow-hidden">
+                    <p
+                      class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                    >
+                      Group {{ userGroup - 1 }}
+                    </p>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">
+                      TEAM PREPARASI
+                    </h4>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button
+                      [routerLink]="['/list-user-progress', 2]"
+                      class="btn btnRead text-white fw-bold"
+                    >
+                      View
+                    </button>
+                  </div>
                 </div>
               </div>
+              <!-- end card body -->
             </div>
-            <!-- end card body -->
+          </div>
+          <div class="row mt-2" class="fade-in">
+            <div class="card card-animate overflow-hidden">
+              <div class="position-absolute start-0" style="z-index: 0">
+                <svg
+                  version="1.2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 200 120"
+                  width="200"
+                  height="120"
+                >
+                  <style>
+                    .s0 {
+                      opacity: 0.07;
+                      fill: #2a76b2;
+                    }
+                  </style>
+                  <path
+                    id="Shape 8"
+                    class="s0"
+                    d="m189.5-25.8c0 0 20.1 46.2-26.7 71.4 0 0-60 15.4-62.3 65.3-2.2 49.8-50.6 59.3-57.8 61.5-7.2 2.3-60.8 0-60.8 0l-11.9-199.4z"
+                  />
+                </svg>
+              </div>
+              <div class="card-body" style="z-index: 1">
+                <div class="d-flex align-items-center">
+                  <div class="flex-grow-1 overflow-hidden">
+                    <p
+                      class="text-uppercase fw-medium text-muted text-truncate mb-3"
+                    >
+                      Group {{ userGroup - 1 }}
+                    </p>
+                    <h4 class="fs-22 fw-semibold ff-secondary mb-0">
+                      TEAM PACKING
+                    </h4>
+                  </div>
+                  <div class="flex-shrink-0">
+                    <button
+                      [routerLink]="['/list-user-progress', 3]"
+                      class="btn btnRead text-white fw-bold"
+                    >
+                      View
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- end card body -->
+            </div>
           </div>
         </div>
       </div>
