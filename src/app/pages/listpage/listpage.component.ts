@@ -22,6 +22,9 @@ export class ListpageComponent implements OnInit {
   team!: string;
   areaId!: any;
 
+  // Tambahkan variabel untuk mengontrol keadaan filter
+  showFilter: boolean = false;
+
   constructor(private statusService: StatusService, private authService: AuthService) {}
 
   isUserAdmin(): boolean {
@@ -81,5 +84,10 @@ export class ListpageComponent implements OnInit {
 
   getBreadCrumbItems(){
     this.breadCrumbItems = [{ label: "AREA" }]; 
+  }
+
+  // Fungsi untuk mengubah keadaan filter
+  toggleFilter() {
+    this.showFilter = !this.showFilter;
   }
 }

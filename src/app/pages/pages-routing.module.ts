@@ -163,6 +163,7 @@ const routes: Routes = [
     path: 'Maintenance',
     component: FirstPageComponent,
   },
+  {
 
     path: 'edit-question',
     component: EditQuestionComponent,
@@ -181,7 +182,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboards/dashboards.module').then((m) => m.DashboardsModule),
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
