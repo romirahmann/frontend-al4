@@ -39,6 +39,7 @@ import { OplComponent } from './maintenance/opl/opl.component';
 import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 import { DetailQuestionComponent } from './quiz-master-list/detail-question/detail-question.component';
 import { EditAnswerComponent } from './quiz-master-list/edit-answer/edit-answer.component';
+import { ViewFilterSuppliesComponent } from './supplies/view-filter-supplies/view-filter-supplies.component';
 
 const routes: Routes = [
   {
@@ -175,6 +176,10 @@ const routes: Routes = [
   {
     path: 'detail-question/:id',
     component: DetailQuestionComponent,
+  },
+  {
+    path: 'view-filter-supplies',
+    component: ViewFilterSuppliesComponent,
   },
 
   {
