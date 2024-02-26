@@ -180,7 +180,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./dashboards/dashboards.module').then((m) => m.DashboardsModule),
   },
-];
+]
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

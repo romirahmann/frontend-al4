@@ -368,20 +368,20 @@ export class SuppliesComponent implements OnInit {
 
   getStatusText(stock: number, minimalStok: number, maxStok: number): string {
     if (stock < minimalStok) {
-      return "Kurang";
+      return "Low";
     } else if (stock > maxStok) {
-      return "Over";
+      return "High";
     } else {
-      return "Cukup";
+      return "Optimal";
     }
   }
   getStatusTextColor(stock: number, minimalStok: number, maxStok: number): string {
     if (stock < minimalStok) {
-      return "red"; // Jika kurang dari minimal stok, kembalikan warna merah
+      return "red"; 
     } else if (stock > maxStok) {
-      return "blue"; // Jika lebih dari maksimal stok, kembalikan warna biru
+      return "blue";
     } else {
-      return "green"; // Jika cukup, kembalikan warna hijau
+      return "green"; 
     }
   }
   

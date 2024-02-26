@@ -52,19 +52,14 @@
                 <span class="ms-2" [ngStyle]="{ color: getStatusTextColor(supply.stok, supply.minimal_stok, supply.max_stok) }">
                   {{ getStatusText(supply.stok, supply.minimal_stok, supply.max_stok) }}
                 </span>
-                
               </div>
             </td>
-            
-            
-
             <td class="text-center">
               <div class="btn-group" role="group" aria-label="Aksi">
-                <button class="btn btn-sm me-1" (click)="goToEditSupply(supply.id_supply)"
-                  style="background-color: #67B173; color: white;">
+                <button class="btn btn-sm me-1" *ngIf="userRole === 1 || userRole === 3 || userRole === 4" (click)="goToEditSupply(supply.id_supply)" style="background-color: #67B173; color: white;">
                   Edit
                 </button>
-                <button class="btn btn-danger btn-sm me-1" (click)="softDelete(supply.id_supply)">
+                <button class="btn btn-danger btn-sm me-1" *ngIf="userRole === 1 || userRole === 3 || userRole === 4" (click)="softDelete(supply.id_supply)">
                   Delete
                 </button>
                 <button class="btn btn-info btn-sm" (click)="goToDetailSupply(supply.id_supply)">
