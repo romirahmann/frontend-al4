@@ -237,4 +237,11 @@ export class SopService {
       headers,
     });
   }
+
+  getResultByAreaId(area_id: number) {
+    const headers = this.authService.getHeaders();
+    return this.http.get(`${this.baseUrl}/master/get-result/${area_id}`, {
+      headers,
+    });
+  }
 }
