@@ -39,6 +39,7 @@ import { OplComponent } from './maintenance/opl/opl.component';
 import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 import { DetailQuestionComponent } from './quiz-master-list/detail-question/detail-question.component';
 import { EditAnswerComponent } from './quiz-master-list/edit-answer/edit-answer.component';
+import { ListScoreQuizComponent } from './quiz/list-score-quiz/list-score-quiz.component';
 
 const routes: Routes = [
   {
@@ -174,13 +175,17 @@ const routes: Routes = [
     path: 'detail-question/:id',
     component: DetailQuestionComponent,
   },
+  {
+    path: 'list-score/:id',
+    component: ListScoreQuizComponent,
+  },
 
   {
     path: '',
     loadChildren: () =>
       import('./dashboards/dashboards.module').then((m) => m.DashboardsModule),
   },
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

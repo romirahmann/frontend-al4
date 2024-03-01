@@ -28,6 +28,7 @@ export class QuizComponent {
   questionsWithAnswers: QuizQuestion[] = [];
   totalScore: number = 0;
   userId!: number;
+  areaId!: number;
   @ViewChild('succesModal') succesModal!: ElementRef;
   constructor(
     private fb: FormBuilder,
@@ -52,14 +53,17 @@ export class QuizComponent {
     // console.log(areaName);
     if (areaName === 'IBF') {
       let id = 1;
+      this.areaId = 1;
       this.getQuestions(id);
     }
     if (areaName === 'PREPARASI') {
       let id = 2;
+      this.areaId = 2;
       this.getQuestions(id);
     }
     if (areaName === 'PACKING') {
       let id = 3;
+      this.areaId = 3;
       this.getQuestions(id);
     }
   }
@@ -121,35 +125,37 @@ export class QuizComponent {
       // AKUMULASI SCORE
       if (answer === 1) {
         score = score + question.score;
-        if (this.userId) {
+        if (this.userId && this.areaId) {
           this.sopService
             .addResultUser({
               id_user: this.userId,
               score: question.score,
               question_id: question.question_id,
+              id_area: this.areaId,
             })
             .subscribe((res: any) => {
-              console.log('Add Answer Successfully', res.data);
+              console.log('Add Answer Successfully');
             });
         }
       }
       if (answer === 0) {
         score = score + 0;
-        if (this.userId) {
+        if (this.userId && this.areaId) {
           this.sopService
             .addResultUser({
               id_user: this.userId,
               score: 0,
               question_id: question.question_id,
+              id_area: this.areaId,
             })
             .subscribe((res: any) => {
-              console.log('Add Answer Successfully', res.data);
+              console.log('Add Answer Successfully');
             });
         }
       }
     });
 
-    console.log(score);
+    // console.log(score);
     this.openModal(this.succesModal, score);
   }
 
