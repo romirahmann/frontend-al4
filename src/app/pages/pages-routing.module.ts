@@ -39,7 +39,7 @@ import { OplComponent } from './maintenance/opl/opl.component';
 import { EditQuestionComponent } from './quiz-master-list/edit-question/edit-question.component';
 import { DetailQuestionComponent } from './quiz-master-list/detail-question/detail-question.component';
 import { EditAnswerComponent } from './quiz-master-list/edit-answer/edit-answer.component';
-import { ViewFilterSuppliesComponent } from './supplies/view-filter-supplies/view-filter-supplies.component';
+import { ViewFilterSuppliesComponent } from './supplies/view-filter-supplies/view-filter-supplies.co;
 
 const routes: Routes = [
   {
