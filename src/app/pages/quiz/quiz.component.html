@@ -31,36 +31,42 @@
   <div class="container">
     <div class="card bg-body-quiz">
       <div class="container">
-        <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
-          <div
-            class="card question form-group"
-            *ngFor="let question of questionsWithAnswers; let i = index"
-          >
-            <span class="h2 fw-bold">{{ question.question_text }}</span>
-            <ng-container
-              *ngFor="let option of question.answers"
-              class="form-check"
+        <ng-container *ngIf="questionsWithAnswers.length !== 0">
+          <form [formGroup]="quizForm" (ngSubmit)="submitQuiz()">
+            <div
+              class="card question form-group"
+              *ngFor="let question of questionsWithAnswers; let i = index"
             >
-              <div class="row p-2">
-                <div class="col-12">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    [id]="'question' + i + 'option' + option.answer_id"
-                    [formControlName]="'question' + i"
-                    [value]="[question, option]"
-                  />
-                  <label
-                    class="form-check-label ms-3"
-                    [for]="'question' + i + 'option' + option.answer_id"
-                    >{{ option.answer_text }}</label
-                  >
+              <span class="h2 fw-bold">{{ question.question_text }}</span>
+              <ng-container
+                *ngFor="let option of question.answers"
+                class="form-check"
+              >
+                <div class="row p-2">
+                  <div class="col-12">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      [id]="'question' + i + 'option' + option.answer_id"
+                      [formControlName]="'question' + i"
+                      [value]="[question, option]"
+                    />
+                    <label
+                      class="form-check-label ms-3"
+                      [for]="'question' + i + 'option' + option.answer_id"
+                      >{{ option.answer_text }}</label
+                    >
+                  </div>
                 </div>
-              </div>
-            </ng-container>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+              </ng-container>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </ng-container>
+        <ng-container *ngIf="questionsWithAnswers.length === 0">
+          <h1>Tidak ada Quiz</h1>
+          <button routerLink="/sop" class="btn btn-danger">BACK</button>
+        </ng-container>
       </div>
     </div>
   </div>

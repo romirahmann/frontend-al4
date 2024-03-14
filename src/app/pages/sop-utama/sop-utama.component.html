@@ -613,19 +613,19 @@
             class="col-12 col-md-6 d-flex justify-content-end align-items-center"
           >
             <button
-              *ngIf="scoreQuiz === 0"
+              *ngIf="scoreQuiz === 0 || scoreQuiz === null"
               routerLink="/quiz"
               class="btn btnRead text-white fw-bold card-animate"
             >
               START
             </button>
-            <button
+            <!-- <button
               *ngIf="scoreQuiz !== 0"
               routerLink="/quiz"
               class="btn btn-danger text-white fw-bold card-animate"
             >
               REATTEMPT
-            </button>
+            </button> -->
           </div>
         </div>
         <!-- QUIZ PREPARASI -->
@@ -659,13 +659,13 @@
             >
               START
             </button>
-            <button
+            <!-- <button
               *ngIf="scoreQuiz !== null"
               routerLink="/quiz"
               class="btn btn-danger text-white fw-bold card-animate"
             >
               REATTEMPT
-            </button>
+            </button> -->
           </div>
         </div>
         <!-- QUIZ PACKING -->
@@ -697,13 +697,13 @@
             >
               START
             </button>
-            <button
+            <!-- <button
               *ngIf="scoreQuiz !== 0"
               routerLink="/quiz"
               class="btn btn-danger text-white fw-bold card-animate"
             >
               REATTEMPT
-            </button>
+            </button> -->
           </div>
         </div>
       </ng-container>
