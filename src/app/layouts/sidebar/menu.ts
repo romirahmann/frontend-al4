@@ -63,6 +63,16 @@ export const MENU: MenuItem[] = [
         label: 'GBL',
         link: '/maintenance-gbl',
       }, 
+      {
+        id: 11,
+        label: 'OC3',
+        link: '/maintenance-gbl',
+      },
+      {
+        id: 11,
+        label: 'ENMIX-SACHET',
+        link: '/maintenance-gbl',
+      },
     ]
   }
 ];

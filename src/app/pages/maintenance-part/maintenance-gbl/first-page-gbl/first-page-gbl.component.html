@@ -112,7 +112,21 @@
                             </div>
                         </div>
                         <div class="col-12 col-md-6 text-center">
-                            
+                            <div class="boxArea boxDocument p-2 card-animate infoParts">
+                                <div *ngIf="totalPartsRefurbished">
+                                    <p class="total_doc"><span [CountTo]="totalPartsRefurbished" [from]="0"
+                                        [duration]="1" class="counter-value me-2 "></span><i class="ri-home-gear-line"></i></p>
+                                </div>
+                                <div *ngIf="!totalPartsRefurbished">
+                                    <p class="total_doc"> 0 <i class="ri-home-gear-line"></i></p>
+                                </div>
+                                <p>Part Refurbished</p>
+                                <div *ngIf="totalPriceRefurbished">
+                                    <p>{{totalPriceRefurbished | currency:'IDR '}}</p>
+                                </div>
+                                <div *ngIf="!totalPriceRefurbished">
+                                    <p>{{0 | currency:'IDR '}}</p>
+                                </div> 
                     </div>
                 </div>
             </div>
@@ -123,7 +137,7 @@
     <!-- CHARTS -->
     <div class="row mt-5">
         <ng-container *ngFor="let area of dataAreaByLine">
-            <div class="col-12 col-md-6 mt-2" *ngIf="area.id_area !== 24">
+            <div class="col-12 col-md-6 mt-2" *ngIf="area.id_area !== 25">
                 <div class="card card-animate overflow-hidden">
                     <div class="position-absolute start-0" style="z-index: 0;">
                         <svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" width="200"

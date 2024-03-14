@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailPartGblComponent } from './detail-part-gbl.component';
+import { FirstPageEnmixComponent } from './first-page-enmix.component';
 
-describe('DetailPartGblComponent', () => {
-  let component: DetailPartGblComponent;
-  let fixture: ComponentFixture<DetailPartGblComponent>;
+describe('FirstPageEnmixComponent', () => {
+  let component: FirstPageEnmixComponent;
+  let fixture: ComponentFixture<FirstPageEnmixComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailPartGblComponent ]
+      declarations: [ FirstPageEnmixComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DetailPartGblComponent);
+    fixture = TestBed.createComponent(FirstPageEnmixComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

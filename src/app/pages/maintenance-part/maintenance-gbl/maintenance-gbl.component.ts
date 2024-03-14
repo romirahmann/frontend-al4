@@ -104,6 +104,9 @@ export class MaintenanceGblComponent {
    if(this.areaId === 23){
      this.areaName = "ELECTRICAL"
    }
+   if(this.areaId === 24){
+    this.areaName = "REFURBISHED"
+  }
  }
 
  // MODAL DELETE
@@ -115,7 +118,7 @@ export class MaintenanceGblComponent {
  // update refurbushid
  toRefurbished(partId: number){
    let data = {
-     "id_area": 12,
+     "id_area": 24,
      "refurbished_at": new Date()
    }
    

@@ -86,7 +86,7 @@ export class AddPartGblComponent {
                   "description": this.description,
                   "refurbished_at": new Date(),
                   "qty_stock": this.qtyStock,
-                  "line": "PET",
+                  "line": "GBL",
                   "price": this.price,
                   "image": this.filename,
                   "place": this.place,
@@ -111,7 +111,7 @@ export class AddPartGblComponent {
                   "part_number": this.partNumber,
                   "description": this.description,
                   "qty_stock": this.qtyStock,
-                  "line": "PET",
+                  "line": "GBL",
                   "price": this.price,
                   "image": this.filename,
                   "place": this.place
@@ -128,7 +128,7 @@ export class AddPartGblComponent {
               "part_number": this.partNumber,
               "description": this.description,
               "qty_stock": this.qtyStock,
-              "line": "PET",
+              "line": "GBL",
               "price": this.price,
               "image": this.filename,
               "place": this.place,
@@ -147,7 +147,7 @@ export class AddPartGblComponent {
   
   closeModal(){
       $('#successModal').modal('hide');
-      this.router.navigate(['/maintenance-pet']);
+      this.router.navigate(['/maintenance-gbl']);
   }
 
 }

@@ -77,6 +77,13 @@ import { AddPartGblComponent } from './maintenance-part/maintenance-gbl/layout-g
 import { DetailPartGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/detail-part-gbl/detail-part-gbl.component';
 import { UpdatePartGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/update-part-gbl/update-part-gbl.component';
 import { AddOutputGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/detail-part-gbl/add-output-gbl/add-output-gbl.component';
+import { ENMIXSACHETComponent } from './maintenance-part/enmix-sachet/enmix-sachet.component';
+import { FirstPageEnmixComponent } from './maintenance-part/enmix-sachet/first-page-enmix/first-page-enmix.component';
+import { LayoutEnmixComponent } from './maintenance-part/enmix-sachet/layout-enmix/layout-enmix.component';
+import { AddPartEnmixComponent } from './maintenance-part/enmix-sachet/layout-enmix/add-part-enmix/add-part-enmix.component';
+import { DetailPartEnmixComponent } from './maintenance-part/enmix-sachet/layout-enmix/detail-part-enmix/detail-part-enmix.component';
+import { UpdatePartEnmixComponent } from './maintenance-part/enmix-sachet/layout-enmix/update-part-enmix/update-part-enmix.component';
+import { AddOutputEnmixComponent } from './maintenance-part/enmix-sachet/layout-enmix/detail-part-enmix/add-output-enmix/add-output-enmix.component';
 
 @NgModule({
   declarations: [
@@ -87,6 +94,7 @@ import { AddOutputGblComponent } from './maintenance-part/maintenance-gbl/layout
     AddSupplyComponent,
     EditSupplyComponent,
     DetailSupplyComponent,
+    ViewFilterSuppliesComponent,
     SopUtamaComponent,
     WiGeneralComponent,
     AddGeneralComponent,
@@ -131,7 +139,14 @@ import { AddOutputGblComponent } from './maintenance-part/maintenance-gbl/layout
     AddPartGblComponent,
     DetailPartGblComponent,
     UpdatePartGblComponent,
-    AddOutputGblComponent
+    AddOutputGblComponent,
+    ENMIXSACHETComponent,
+    FirstPageEnmixComponent,
+    LayoutEnmixComponent,
+    AddPartEnmixComponent,
+    DetailPartEnmixComponent,
+    UpdatePartEnmixComponent,
+    AddOutputEnmixComponent
 
   ],
   imports: [

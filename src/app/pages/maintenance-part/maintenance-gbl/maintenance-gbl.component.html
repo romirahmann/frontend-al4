@@ -85,7 +85,7 @@
                               [routerLink]="['/update-part-gbl', part.part_id, part.id_area]"><i
                                 class="ri-pencil-fill align-bottom me-2 text-muted"></i> Edit</a>
                             <div class="dropdown-divider"></div>
-                            <a (click)="modelRefurbished(part.part_id)" *ngIf="userRole === 4 && areaId !== 6"
+                            <a (click)="modelRefurbished(part.part_id)" *ngIf="userRole === 4 && areaId !== 24"
                               class="dropdown-item" data-bs-toggle="modal" data-bs-target="#refurbishedModal">
                               <i class="ri-share-box-line align-bottom me-2 text-muted"></i> Refurbished</a>
                             <a (click)="centerModal(part.part_id, removeModal)" *ngIf="userRole === 4"

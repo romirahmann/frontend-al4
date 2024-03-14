@@ -55,8 +55,9 @@ import { MaintenanceGblComponent } from './maintenance-part/maintenance-gbl/main
 import { FirstPageGblComponent } from './maintenance-part/maintenance-gbl/first-page-gbl/first-page-gbl.component';
 import { AddPartGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/add-part-gbl/add-part-gbl.component';
 import { UpdatePartGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/update-part-gbl/update-part-gbl.component';
-import { DetailPartGblComponent } from '../src/app/gbl/layout-gbl/detail-part-gbl/detail-part-gbl.component';
 import { AddOutputGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/detail-part-gbl/add-output-gbl/add-output-gbl.component';
+import { ViewFilterSuppliesComponent } from './supplies/view-filter-supplies/view-filter-supplies.component';
+import { DetailPartGblComponent } from './maintenance-part/maintenance-gbl/layout-gbl/detail-part-gbl/detail-part-gbl.component';
 
 const routes: Routes = [
   {
@@ -92,6 +93,10 @@ const routes: Routes = [
   {
     path: 'detail-supply/:id',
     component: DetailSupplyComponent,
+  },
+  {
+    path: 'view-filter-supplies',
+    component: ViewFilterSuppliesComponent,
   },
 
   // ROUTING SOP

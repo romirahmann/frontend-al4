@@ -27,6 +27,7 @@ export class FirstPageGblComponent {
  totalPartsPacking_out!: number;
  totalPartsFilling!: number;
  totalPartsElectrical!: number;
+ totalPartsRefurbished!: number;
 
  // Total Price
  totalPricePreparasi: number = 0;
@@ -34,6 +35,7 @@ export class FirstPageGblComponent {
  totalPricePacking_out: number = 0;
  totalPriceFilling: number = 0;
  totalPriceElectrical: number = 0;
+ totalPriceRefurbished: number = 0 ;
 
  stockRemain: any;
  stockRemainGrouped: { [key: number]: any[] } = {};
@@ -75,6 +77,7 @@ getTotalPartsGroupByArea(){
        Packing_out: 0,
        Filling:0,
        Electrical: 0,
+       Refurbished: 0
      };
 
      // Mengisi totalParts dengan jumlah part yang sesuai berdasarkan data yang ada
@@ -92,7 +95,9 @@ getTotalPartsGroupByArea(){
          this.totalParts.Filling = jumlahPart;
        } else if (areaId === 23) {
          this.totalParts.Electrical = jumlahPart;
-       }
+       } else if (areaId === 24) {
+         this.totalParts.Refurbished = jumlahPart;
+      }
        
      });
 
@@ -101,6 +106,7 @@ getTotalPartsGroupByArea(){
      this.totalPartsPacking_out = this.totalParts.Packing_out
      this.totalPartsFilling = this.totalParts.Filling
      this.totalPartsElectrical = this.totalParts.Electrical
+     this.totalPartsRefurbished = this.totalParts.Refurbished
    }
  )
 }
@@ -164,10 +170,12 @@ getTotalPriceIBF(){
      this.totalPriceElectrical = res.data[0].total_price
    }
  )
-
-   }
-
-
-
+  // Refurbished
+  this.maintenanceService.getTotalPrice(12).subscribe(
+    (res: any) => {
+      this.totalPriceRefurbished = res.data[0].total_price
+    }
+  )
 }
 
+}
