@@ -433,7 +433,7 @@ export class SopUtamaComponent {
 
   getTotalScoreQuiz() {
     this.sopService.getScoreUserByUserId(this.userId).subscribe((res: any) => {
-      // console.log(res.data[0]);
+      console.log(res.data[0]);
       let data = res.data[0];
       this.scoreQuiz = data.totalScore;
     });

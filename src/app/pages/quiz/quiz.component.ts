@@ -73,6 +73,7 @@ export class QuizComponent {
       group['question' + index] = '';
     });
     this.quizForm = this.fb.group(group);
+    console.log(this.questionsWithAnswers);
   }
 
   getQuestions(id: number) {
